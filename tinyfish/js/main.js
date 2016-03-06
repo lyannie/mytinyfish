@@ -17,8 +17,10 @@ var fruit;
 
 var mom;
 
-var mx;
-var my;
+var mx; //mouse x;
+var my; //mouse y;
+
+var baby;
 
 document.body.onload = game;
 function game(){
@@ -51,12 +53,16 @@ function init(){
 
 	mx = canWidth * 0.5;
 	my = canHeight * 0.5;
+
+	baby = new babyObj();
+	baby.init();
 }
 function gameloop(){
 	window.requestAnimFrame(gameloop); //setInterval, setTimeout, frame per second;
 	var now = Date.now();
 	deltaTime = now - lastTime;
 	lastTime = now;
+	if(deltaTime > 40) deltaTime = 40;
 
  	drawBackground();
  	ane.draw();
@@ -65,11 +71,13 @@ function gameloop(){
 
  	ctx1.clearRect(0, 0, canWidth, canHeight);
  	mom.draw();
+ 	momFruitsCollision();
+
+ 	baby.draw();
 }
 function onMouseMove(e){
 	if(e.offSetX || e.layerX){
 		mx = e.offSetX == undefined ? e.layerX : e.offSetX;
 		my = e.offSetY == undefined ? e.layerY : e.offSetY;
-		console.log(mx);
 	}
 }

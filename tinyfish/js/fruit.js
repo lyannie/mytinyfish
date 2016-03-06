@@ -8,7 +8,7 @@ var fruitObj = function  () {
 	this.orange = new Image();
 	this.blue = new Image();
 }
-fruitObj.prototype.num = 15;
+fruitObj.prototype.num = 30;
 fruitObj.prototype.init = function(){
 	for (var i = 0; i < this.num; i++) {
 		this.alive[i] = false;
@@ -20,6 +20,7 @@ fruitObj.prototype.init = function(){
 	this.orange.src = "./src/fruit.png";
 	this.blue.src = "./src/blue.png";
 }
+
 fruitObj.prototype.draw = function(){
 	for (var i = 0; i < this.num; i++) {
 		//draw;
@@ -60,17 +61,20 @@ fruitObj.prototype.born = function(i){
 		this.fruitType[i] = "orange";
 	}
 }
-
+fruitObj.prototype.dead = function(i){
+	this.alive[i] = false;
+}
 function fruitMonitor(){
 	var num = 0;
 	for(var i = 0; i < fruit.num; i++){
 		if(fruit.alive[i]){
 			num++;
 		}
-		if(num < 15){
-			sendFruit();
-			return;
-		}
+		
+	}
+	if(num < 15){
+		sendFruit();
+		return;
 	}
 }
 function sendFruit(){

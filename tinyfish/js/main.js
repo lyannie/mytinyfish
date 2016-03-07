@@ -21,6 +21,8 @@ var mx; //mouse x;
 var my; //mouse y;
 
 var baby;
+var babyTail = [];
+var babyEye = [];
 
 document.body.onload = game;
 function game(){
@@ -56,6 +58,15 @@ function init(){
 
 	baby = new babyObj();
 	baby.init();
+
+	for(var i = 0; i < 8; i++){
+		babyTail[i] = new Image();
+		babyTail[i].src = "./src/babyTail" + i + ".png";
+ 	}
+ 	for(var i = 0; i < 2; i++){
+ 		babyEye[i] = new Image();
+ 		babyEye[i].src = "./src/babyEye" + i + ".png";
+ 	}
 }
 function gameloop(){
 	window.requestAnimFrame(gameloop); //setInterval, setTimeout, frame per second;

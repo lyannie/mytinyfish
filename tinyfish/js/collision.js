@@ -9,3 +9,10 @@ function momFruitsCollision(){
 		}
 	}
 }
+//mom feed baby
+function momBabyCollision(){
+	var l = calLength2(mom.x, mom.y, baby.x, baby.y);
+	if(l < 400){
+		baby.babyBodyCount = 0;
+	}
+}
